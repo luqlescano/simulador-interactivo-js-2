@@ -57,10 +57,38 @@ function buscarAuto() {
 
 function crearAuto() {
     let marca = prompt("Ingresá la MARCA:").trim();
+
+    while(marca === null || !isNaN(marca)) {
+        alert("El tipo de dato ingresado no está permitido, volvé a intentar...");
+        marca = prompt("Ingresá la MARCA:").trim();
+    }
+
     let modelo = prompt("Ingresá el MODELO:").trim();
+
+    while(modelo === null || !isNaN(modelo)) {
+        alert("El tipo de dato ingresado no está permitido, volvé a intentar...");
+        modelo = prompt("Ingresá el MODELO:").trim();
+    }
+
     let anio = parseInt(prompt("Ingresar AÑO:"));
+
+    while(anio === null || isNaN(anio) || anio !== parseInt(anio, 10)) {
+        alert("El tipo de dato ingresado no está permitido, volvé a intentar...");
+        anio = parseInt(prompt("Ingresar AÑO:"));
+    }
+
     let estado = prompt("Ingresá el ESTADO:").trim();
-    
+
+    while(estado === null || !isNaN(estado)) {
+        alert("El tipo de dato ingresado no está permitido, volvé a intentar...");
+        estado = prompt("Ingresá el ESTADO:").trim();
+    }
+
+    let autoNuevo = new Auto(marca, modelo, anio, estado);
+
+    listaAutos.push(autoNuevo);
+
+    console.table(listaAutos);
 }
 
 if (queQueresHacerUsuario === "1") {
